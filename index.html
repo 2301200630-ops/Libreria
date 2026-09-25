@@ -7,14 +7,15 @@
   <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Quicksand:wght@500;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg-dark: #120d18;
-      --card-bg: rgba(28, 20, 38, 0.85);
+      --bg-pink: #fde8f0;
+      --bg-pink-accent: #fbcfe8;
+      --card-bg: rgba(28, 20, 38, 0.92);
       --pink-pastel: #ffb7d5;
       --pink-soft: #f472b6;
-      --pink-neon: #ec4899;
-      --text-main: #fff0f6;
+      --text-main: #ffffff;
       --text-sub: #fbcfe8;
-      --border-glow: rgba(255, 183, 213, 0.35);
+      --text-title-pink: #d946ef;
+      --border-glow: rgba(236, 72, 153, 0.3);
     }
 
     * {
@@ -24,13 +25,13 @@
     }
 
     body {
-      background-color: var(--bg-dark);
+      background-color: var(--bg-pink);
       background-image: 
-        radial-gradient(circle at 15% 20%, rgba(255, 183, 213, 0.18) 0%, transparent 45%),
-        radial-gradient(circle at 85% 80%, rgba(236, 72, 153, 0.15) 0%, transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(20, 15, 26, 0.9) 0%, rgba(12, 8, 16, 0.98) 100%);
+        radial-gradient(circle at 20% 20%, rgba(251, 207, 232, 0.8) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(244, 114, 182, 0.3) 0%, transparent 50%),
+        radial-gradient(circle at 50% 50%, #fde8f0 0%, #fbcfe8 100%);
       font-family: 'Quicksand', sans-serif;
-      color: var(--text-main);
+      color: #333;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
@@ -40,11 +41,11 @@
       position: relative;
     }
 
-    /* Floating particles */
+    /* Partículas flotantes */
     .bg-particle {
       position: absolute;
       pointer-events: none;
-      opacity: 0.35;
+      opacity: 0.45;
       animation: floatUp 10s infinite linear;
       font-size: 1.3rem;
     }
@@ -54,8 +55,8 @@
         transform: translateY(100vh) rotate(0deg);
         opacity: 0;
       }
-      20% { opacity: 0.5; }
-      80% { opacity: 0.5; }
+      20% { opacity: 0.6; }
+      80% { opacity: 0.6; }
       100% {
         transform: translateY(-10vh) rotate(360deg);
         opacity: 0;
@@ -72,10 +73,8 @@
       font-family: 'Fredoka', sans-serif;
       font-size: 2.4rem;
       letter-spacing: 1px;
-      color: var(--pink-pastel);
-      text-shadow: 
-        0 0 12px rgba(255, 183, 213, 0.6),
-        0 0 25px rgba(236, 72, 153, 0.4);
+      color: #2e102d;
+      text-shadow: 0 0 10px rgba(236, 72, 153, 0.2);
       margin-bottom: 0.4rem;
       display: flex;
       align-items: center;
@@ -84,11 +83,11 @@
     }
 
     p.subtitle {
-      color: var(--text-sub);
+      color: #6b21a8;
       font-size: 0.95rem;
       font-weight: 600;
       letter-spacing: 0.5px;
-      opacity: 0.9;
+      opacity: 0.85;
     }
 
     .container {
@@ -107,7 +106,7 @@
       padding: 1.2rem 1.6rem;
       backdrop-filter: blur(12px);
       transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5), inset 0 0 15px rgba(255, 183, 213, 0.05);
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.15), 0 4px 12px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -117,10 +116,8 @@
 
     .project-card:hover {
       transform: translateY(-5px) scale(1.015);
-      border-color: var(--pink-pastel);
-      box-shadow: 
-        0 12px 30px rgba(255, 183, 213, 0.25),
-        0 0 15px rgba(236, 72, 153, 0.3);
+      border-color: var(--pink-soft);
+      box-shadow: 0 12px 30px rgba(236, 72, 153, 0.3);
     }
 
     .project-info {
@@ -133,7 +130,7 @@
       font-family: 'Fredoka', sans-serif;
       font-size: 1.25rem;
       font-weight: 600;
-      color: #fff;
+      color: var(--text-main);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -141,13 +138,13 @@
 
     .project-desc {
       font-size: 0.88rem;
-      color: var(--pink-pastel);
-      opacity: 0.85;
+      color: var(--text-sub);
+      opacity: 0.9;
     }
 
     .btn-open {
       text-decoration: none;
-      background: linear-gradient(135deg, #ffb7d5, #f472b6);
+      background: #fde8f0;
       color: #1a0921;
       padding: 0.65rem 1.3rem;
       border-radius: 14px;
@@ -156,7 +153,7 @@
       font-size: 0.95rem;
       transition: all 0.25s ease;
       white-space: nowrap;
-      box-shadow: 0 4px 15px rgba(255, 183, 213, 0.4);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       display: inline-flex;
       align-items: center;
       gap: 0.4rem;
@@ -164,10 +161,10 @@
     }
 
     .btn-open:hover {
-      background: linear-gradient(135deg, #ffffff, #ffb7d5);
-      box-shadow: 0 6px 20px rgba(255, 183, 213, 0.7);
+      background: #ffffff;
+      box-shadow: 0 6px 18px rgba(236, 72, 153, 0.4);
       transform: scale(1.08);
-      color: #000;
+      color: #d946ef;
     }
 
     footer {
@@ -175,22 +172,21 @@
       padding-top: 3rem;
       text-align: center;
       font-size: 0.9rem;
-      color: var(--pink-pastel);
-      opacity: 0.8;
+      color: #4c1d95;
       z-index: 2;
       font-weight: 600;
     }
 
     footer span {
-      color: var(--pink-soft);
+      color: #ec4899;
     }
   </style>
 </head>
 <body>
 
-  <!-- Background decorative particles -->
-  <div class="bg-particle" style="left: 10%; animation-delay: 0s;">🖤</div>
-  <div class="bg-particle" style="left: 25%; animation-delay: 3s;">🎀</div>
+  <!-- Partículas kawaii/goth -->
+  <div class="bg-particle" style="left: 10%; animation-delay: 0s;">🎀</div>
+  <div class="bg-particle" style="left: 25%; animation-delay: 3s;">🖤</div>
   <div class="bg-particle" style="left: 50%; animation-delay: 6s;">🐾</div>
   <div class="bg-particle" style="left: 75%; animation-delay: 2s;">💖</div>
   <div class="bg-particle" style="left: 90%; animation-delay: 8s;">✨</div>
