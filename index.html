@@ -40,6 +40,44 @@
       position: relative;
     }
 
+    /* Pantalla de bienvenida / Inicio de Música */
+    #overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(18, 13, 24, 0.95);
+      backdrop-filter: blur(15px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 999;
+      cursor: pointer;
+      text-align: center;
+      padding: 1rem;
+    }
+
+    #overlay h2 {
+      font-family: 'Fredoka', sans-serif;
+      font-size: 2rem;
+      color: var(--pink-pastel);
+      margin-bottom: 1rem;
+      text-shadow: 0 0 15px rgba(255, 183, 213, 0.6);
+    }
+
+    #overlay p {
+      font-size: 1.1rem;
+      color: var(--text-sub);
+      background: linear-gradient(135deg, #ffb7d5, #f472b6);
+      color: #1a0921;
+      padding: 0.8rem 1.8rem;
+      border-radius: 20px;
+      font-weight: 700;
+      box-shadow: 0 4px 20px rgba(255, 183, 213, 0.5);
+    }
+
     /* Floating particles */
     .bg-particle {
       position: absolute;
@@ -188,6 +226,12 @@
 </head>
 <body>
 
+  <!-- Pantalla para iniciar con música -->
+  <div id="overlay" onclick="iniciarPagina()">
+    <h2>Para Thom 🎀🖤</h2>
+    <p>Haz clic para abrir ✨</p>
+  </div>
+
   <!-- Background decorative particles -->
   <div class="bg-particle" style="left: 10%; animation-delay: 0s;">🖤</div>
   <div class="bg-particle" style="left: 25%; animation-delay: 3s;">🎀</div>
@@ -208,7 +252,7 @@
         <div class="project-title">Mi Negro 💕</div>
         <div class="project-desc">Detalle especial #1</div>
       </div>
-      <a href="https://thom-txt.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://thom-txt.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
     <!-- Tarjeta 2 -->
@@ -217,7 +261,7 @@
         <div class="project-title">Tú 💕</div>
         <div class="project-desc">Detalle especial #2</div>
       </div>
-      <a href="https://thom-ans.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://thom-ans.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
     <!-- Tarjeta 3 -->
@@ -226,7 +270,7 @@
         <div class="project-title">Mi Flaco 💕</div>
         <div class="project-desc">Detalle especial #3</div>
       </div>
-      <a href="https://thom-love.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://thom-love.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
     <!-- Tarjeta 4 -->
@@ -235,7 +279,7 @@
         <div class="project-title">Esperando por ti 💕</div>
         <div class="project-desc">Detalle especial #4</div>
       </div>
-      <a href="https://thom-mxm.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://thom-mxm.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
     <!-- Tarjeta 5 -->
@@ -244,7 +288,7 @@
         <div class="project-title">Mi Anestesia 💕</div>
         <div class="project-desc">Detalle especial #5</div>
       </div>
-      <a href="https://tmp-mrn.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://tmp-mrn.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
     <!-- Tarjeta 6 -->
@@ -253,7 +297,7 @@
         <div class="project-title">Mi bombón 💕</div>
         <div class="project-desc">Detalle especial #6</div>
       </div>
-      <a href="https://letterlove-1.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://letterlove-1.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
     <!-- Tarjeta 7 -->
@@ -262,7 +306,7 @@
         <div class="project-title">No One Noticed 💕</div>
         <div class="project-desc">Detalle especial #7</div>
       </div>
-      <a href="https://love-pqst.onrender.com/" target="_blank" class="btn-open">Abrir ↗</a>
+      <a href="https://love-pqst.onrender.com/" target="_blank" class="btn-open">Abrir ↗️</a>
     </div>
 
   </main>
@@ -270,9 +314,28 @@
   <footer>
     Hecho con mucho amor para Thom <span>🎀🖤</span>
   </footer>
-  <audio id="musicaFondo" loop>
-  <source src="cancionn.mp3" type="audio/mpeg">
-</audio>
+
+  <audio id="musicaFondo" loop preload="auto">
+    <source src="cancionn.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function iniciarPagina() {
+      const audio = document.getElementById('musicaFondo');
+      const overlay = document.getElementById('overlay');
+      
+      if (audio) {
+        audio.play().catch(err => console.log(err));
+      }
+      
+      // Oculta la pantalla inicial suavemente
+      overlay.style.transition = 'opacity 0.5s ease';
+      overlay.style.opacity = '0';
+      setTimeout(() => {
+        overlay.style.display = 'none';
+      }, 500);
+    }
+  </script>
 
 </body>
 </html>
